@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TILKUNA - Proyecto Educativo STEAM | Escuela Normal de Tilcara</title>
+    <meta name="description" content="Plataforma interactiva del proyecto IKU - TILKUNA de la Escuela Normal Dr. Eduardo Casanova. Desafío educativo sobre los 12 sitios patrimoniales de Tilcara. Declarado de Interés Municipal y finalista en Feria Nacional de Ciencias 2026.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Canvas para efectos de partículas y confeti festivo -->
+    <canvas id="fx-canvas"></canvas>
+
+    <!-- HEADER & NAVEGACIÓN -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="brand">
+                <span class="brand-badge">STEAM</span>
+                <span class="brand-title">IKU – TILKUNA</span>
+                <span class="brand-sub">Esc. Normal Dr. Eduardo Casanova</span>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#institucional">Institucional</a>
+                <a href="#estudiantes">Equipo 4.° 3.ª</a>
+                <a href="#steam">Enfoque STEAM</a>
+                <a href="#circuitos">12 Puntos</a>
+                <a href="#juego-seccion" class="btn-nav-play">🎮 Jugar Ahora</a>
+            </nav>
+
+            <div class="nav-status">
+                <button id="btn-toggle-sound" class="btn-sound" title="Activar/Silenciar sonido" aria-label="Control de sonido">
+                    <span id="sound-icon">🔊</span>
+                </button>
+                <div class="online-pill" title="Usuarios en línea en tiempo real">
+                    <span class="dot-pulse"></span>
+                    <span id="header-online-count">1</span> en línea
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- SECCIÓN 1: HERO / PORTADA -->
+        <section id="inicio" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="badges-row">
+                        <span class="badge badge-gold">🏆 Instancia Nacional Feria de Ciencias 2026</span>
+                        <span class="badge badge-primary">🏛️ Declarado de Interés Municipal (Minuta N° 23/2026)</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        IKU – TILKUNA
+                        <span class="hero-subtitle">“El vuelo de la curiosidad que nos guía la historia y la cultura de Tilcara”</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Una innovadora propuesta pedagógica nacida en las aulas de <strong>4.° Año, 3.ª División</strong> de la Escuela Normal Superior "Dr. Eduardo Casanova". Fusionamos el patrimonio cultural de Tilcara con tecnología en tiempo real, arte visual y electrónica interactiva para aprender jugando.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#juego-seccion" class="btn btn-primary btn-large">
+                            <span>🎮 Entrar al Juego Desafío</span>
+                        </a>
+                        <button id="btn-open-minuta-hero" class="btn btn-secondary btn-large">
+                            <span>📜 Ver Declaración Municipal</span>
+                        </button>
+                    </div>
+
+                    <div class="stats-ribbon">
+                        <div class="stat-item">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Sitios Patrimoniales</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">93%</span>
+                            <span class="stat-label">Conciencia de Cuidado</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Juventud Quebradeña</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-media">
+                    <div class="artwork-card">
+                        <div class="artwork-glow"></div>
+                        <img src="/img/diseño_tilkuna.jpg" alt="Diseño artístico del proyecto IKU TILKUNA realizado por estudiantes" class="artwork-img" id="hero-artwork-img" />
+                        <div class="artwork-caption">
+                            <strong>Obra oficial de los estudiantes</strong>
+                            <p>El diablo del carnaval quebradeño junto al Pucará, la Iglesia, la arquitectura histórica y la Garganta del Diablo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: INSTITUCIONAL Y DECLARACIÓN CONCEJO DELIBERANTE -->
+        <section id="institucional" class="section institutional-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">RESPALDO Y COMUNIDAD</span>
+                    <h2>Proyecto Escolar con Reconocimiento Municipal</h2>
+                    <p>La unión entre la educación pública, la juventud tilcareña y las instituciones representativas de la comunidad.</p>
+                </div>
+
+                <div class="cards-grid">
+                    <!-- Tarjeta Escuela Normal -->
+                    <div class="info-card">
+                        <div class="info-card-icon">🏫</div>
+                        <h3>Escuela Normal Superior “Dr. Eduardo Casanova”</h3>
+                        <p class="school-info">Institución señera fundada en 1974 para garantizar el arraigo y el acceso a la educación secundaria de las familias quebradeñas en Villa Las Rosas (Ruta Nacional 9).</p>
+                        <ul class="bullet-list">
+                            <li><strong>División:</strong> 4.° Año, 3.ª División (Ciclo Lectivo 2026).</li>
+                            <li><strong>Alumnas Expositoras:</strong> Llampas Isis Laila y Cazón Serapio María José.</li>
+                            <li><strong>Docentes Asesores:</strong> Prof. Vilma Rosario Guanuco, Prof. Mirta Susana Mamani y Prof. Hernán Renato Gutiérrez.</li>
+                            <li><strong>Fase:</strong> Clasificación y representación provincial en la <strong>Instancia Nacional de Feria de Ciencias</strong>.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tarjeta Concejo Deliberante -->
+                    <div class="info-card highlight-card">
+                        <div class="info-card-icon">🏛️</div>
+                        <h3>Concejo Deliberante de San Francisco de Tilcara</h3>
+                        <p>Por <strong>Minuta de Declaración N° 023/2026-HCDT</strong>, el cuerpo legislativo declaró al proyecto de Interés Cultural, Educativo y Turístico Municipal.</p>
+                        <div class="resolution-highlights">
+                            <div class="highlight-point">
+                                <span class="check">✓</span>
+                                <div><strong>Subdominio y VPS Municipal:</strong> Hospedaje tecnológico gratuito en <code>www.tilkuna.hcdtilcara.gob.ar</code>.</div>
+                            </div>
+                            <div class="highlight-point">
+                                <span class="check">✓</span>
+                                <div><strong>Taller Técnico STEAM:</strong> 4 módulos de acompañamiento a cargo del Secretario Parlamentario Cristian Alberto Pérez (Electrónica/USB, Web, VPS y Web Serial API).</div>
+                            </div>
+                        </div>
+                        <div class="card-btn-box">
+                            <button id="btn-open-minuta-card" class="btn btn-outline">Leer Minuta Completa N° 023/2026</button>
+                            <a href="/documentos/tilkuna.pdf" target="_blank" class="btn btn-ghost">Descargar PDF Oficial ↗</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN NUEVA: EQUIPO DE ESTUDIANTES CREADORES (4.° 3.ª) -->
+        <section id="estudiantes" class="section students-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">PROTAGONISTAS DEL PROYECTO</span>
+                    <h2>Alumnos Creadores de 4.° Año, 3.ª División</h2>
+                    <p>Jóvenes investigadores, artistas y constructores de la Escuela Normal Superior "Dr. Eduardo Casanova" que dieron vida a IKU - TILKUNA.</p>
+                </div>
+
+                <div class="students-summary-badge">
+                    <span>👥 23 Estudiantes Investigadores</span>
+                    <span class="dot-separator">•</span>
+                    <span>🌟 2 Alumnas Expositoras Nacionales</span>
+                    <span class="dot-separator">•</span>
+                    <span>📍 Tilcara, Jujuy</span>
+                </div>
+
+                <div class="students-grid" id="students-grid">
+                    <!-- Tarjetas de estudiantes generadas dinámicamente con JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: ENFOQUE PEDAGÓGICO STEAM & RESULTADOS -->
+        <section id="steam" class="section steam-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">METODOLOGÍA ABP + STEAM</span>
+                    <h2>De la Maqueta Física a la Plataforma Digital</h2>
+                    <p>Los estudiantes transformaron un diagnóstico territorial en un circuito interactivo con señalización lumínica y web en tiempo real.</p>
+                </div>
+
+                <div class="steam-grid">
+                    <div class="steam-pillar">
+                        <div class="pillar-letter">A</div>
+                        <h4>Artes Visuales (Eje Central)</h4>
+                        <p>Diseño y estética de la maqueta, identidad gráfica, dibujo del personaje quebradeño, fichas y composición visual.</p>
+                    </div>
+                    <div class="steam-pillar">
+                        <div class="pillar-letter">T</div>
+                        <h4>Tecnología & Electrónica</h4>
+                        <p>Circuito eléctrico original con luces verde (acierto) y roja (error), sincronizado con WebSockets y control Arduino.</p>
+                    </div>
+                    <div class="steam-pillar">
+                        <div class="pillar-letter">S</div>
+                        <h4>Ciencias Sociales & Historia</h4>
+                        <p>Investigación del patrimonio prehispánico, colonial y tradiciones orales: la sirena, Punta Corral y Pachamama.</p>
+                    </div>
+                    <div class="steam-pillar">
+                        <div class="pillar-letter">E</div>
+                        <h4>Ingeniería & Maqueta</h4>
+                        <p>Construcción física del relieve, conexiones de los 12 puntos emblemáticos y pruebas de contacto interactivo.</p>
+                    </div>
+                    <div class="steam-pillar">
+                        <div class="pillar-letter">M</div>
+                        <h4>Matemática & Estadística</h4>
+                        <p>49 encuestas analizadas (estudiantes, docentes, comunidad y turistas), escalas proporcionales del mapa y métricas.</p>
+                    </div>
+                </div>
+
+                <!-- Gráficos de Encuestas Resumidos -->
+                <div class="survey-results-box">
+                    <h3 class="box-title">📊 Hallazgos Clave de la Investigación de Campo</h3>
+                    <div class="survey-grid">
+                        <div class="survey-card">
+                            <div class="survey-percent">93%</div>
+                            <p class="survey-desc">De los turistas calificó con puntaje 5/5 la máxima importancia de cuidar el patrimonio de Tilcara.</p>
+                        </div>
+                        <div class="survey-card">
+                            <div class="survey-percent">62%</div>
+                            <p class="survey-desc">De los estudiantes encuestados expresó su deseo de aprender historia y turismo jugando.</p>
+                        </div>
+                        <div class="survey-card">
+                            <div class="survey-percent">73%</div>
+                            <p class="survey-desc">De los docentes manifestó necesitar herramientas lúdicas y didácticas innovadoras para el aula.</p>
+                        </div>
+                        <div class="survey-card">
+                            <div class="survey-percent">12</div>
+                            <p class="survey-desc">Puntos turísticos e históricos conectados en el circuito pedagógico de Tilcara.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: LOS 12 PUNTOS EMBLEMÁTICOS DEL CIRCUITO -->
+        <section id="circuitos" class="section circuits-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">RECORRIDO PATRIMONIAL</span>
+                    <h2>Los 12 Puntos del Circuito Tilkuna</h2>
+                    <p>Estos son los 12 sitios emblemáticos del proyecto escolar. Aquí verás sus datos básicos; <strong>la historia completa, curiosidades y secretos ancestrales se desbloquean en el Desafío Tilkuna cuando respondes correctamente</strong>.</p>
+                </div>
+
+                <div class="places-grid" id="places-grid">
+                    <!-- Tarjetas generadas dinámicamente con JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: EL JUEGO INTERACTIVO MULTIJUGADOR -->
+        <section id="juego-seccion" class="section game-wrapper-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">EXPERIENCIA INTERACTIVA</span>
+                    <h2>Desafío Quebradeño TILKUNA</h2>
+                    <p>Pon a prueba tu conocimiento. Cada acierto enciende la luz verde y te revela los secretos del patrimonio tilcareño.</p>
+                </div>
+
+                <div class="game-console">
+
+                    <!-- PANTALLA 1: REGISTRO Y SELECCIÓN DE MODO -->
+                    <div id="screen-register" class="game-screen">
+                        <div class="screen-header">
+                            <div class="game-logo-pill">🕹️ TILKUNA PLAY</div>
+                            <h3>Ingresa a la Sala de Desafío</h3>
+                            <p class="subtitle">Compite en solitario contra el Bot o desafía en vivo a otros estudiantes conectados</p>
+                        </div>
+
+                        <div class="input-field-group">
+                            <label for="username-input">Tu Nombre o Apodo:</label>
+                            <input type="text" id="username-input" placeholder="Ej: Laila, Nahuel, Sofía..." maxlength="15" autocomplete="off" />
+                        </div>
+
+                        <div class="mode-buttons-grid">
+                            <button id="btn-single" class="btn btn-primary btn-game">
+                                <span class="btn-icon">🤖</span>
+                                <div>
+                                    <strong>Jugar Solo (Vs Bot)</strong>
+                                    <small>Practica tus conocimientos a tu ritmo</small>
+                                </div>
+                            </button>
+
+                            <button id="btn-multi" class="btn btn-secondary btn-game">
+                                <span class="btn-icon">🌐</span>
+                                <div>
+                                    <strong>Multijugador en Línea</strong>
+                                    <small>Desafía a contrincantes reales conectados</small>
+                                </div>
+                            </button>
+                        </div>
+
+                        <!-- Panel de estado rápido de conexiones -->
+                        <div class="live-status-box">
+                            <div class="status-indicator">
+                                <span class="dot-pulse"></span>
+                                <span>Usuarios conectados en el servidor: <strong id="lobby-online-count">1</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PANTALLA 2: SALA DE ESPERA / LOBBY CON JUGADORES REALES -->
+                    <div id="screen-lobby" class="game-screen hidden">
+                        <div class="screen-header">
+                            <div class="game-logo-pill">👥 SALA MULTIJUGADOR EN VIVO</div>
+                            <h3>Usuarios Conectados</h3>
+                            <p class="subtitle">Puedes esperar un emparejamiento automático o desafiar directamente a un rival</p>
+                        </div>
+
+                        <!-- Tarjeta de emparejamiento automático -->
+                        <div class="auto-match-box">
+                            <div class="match-spinner"></div>
+                            <div class="match-info">
+                                <strong>Buscando emparejamiento aleatorio...</strong>
+                                <span id="match-timer-label">Esperando contrincante en la cola</span>
+                            </div>
+                        </div>
+
+                        <!-- Lista de usuarios reales conectados -->
+                        <div class="players-online-container">
+                            <div class="players-list-header">
+                                <h4>Estudiantes y Visitantes en Línea</h4>
+                                <button id="btn-refresh-users" class="btn-small-refresh" title="Actualizar lista">↻ Refrescar</button>
+                            </div>
+                            <div id="players-list" class="players-list">
+                                <div class="loading-users">Cargando usuarios conectados...</div>
+                            </div>
+                        </div>
+
+                        <div class="lobby-footer-actions">
+                            <button id="btn-cancel-lobby" class="btn btn-secondary">← Salir de la sala</button>
+                            <button id="btn-play-bot-fallback" class="btn btn-outline">Jugar contra Bot Quebradeño</button>
+                        </div>
+                    </div>
+
+                    <!-- PANTALLA 3: TABLERO DE JUEGO -->
+                    <div id="screen-game" class="game-screen hidden">
+                        <!-- Marcador Superior -->
+                        <div class="game-scoreboard">
+                            <div id="p1-card" class="player-card active">
+                                <div class="p-avatar">🧑</div>
+                                <div class="p-info">
+                                    <div id="p1-name" class="p-name">Tú</div>
+                                    <div id="p1-score" class="p-score">0 pts</div>
+                                </div>
+                            </div>
+
+                            <div class="round-hud">
+                                <div class="hud-circuit-leds">
+                                    <span class="circuit-light light-green" id="hud-green-led" title="Circuito Acierto"></span>
+                                    <span class="circuit-light light-red" id="hud-red-led" title="Circuito Error"></span>
+                                </div>
+                                <div id="round-text" class="hud-round">Ronda 1 / 5</div>
+                                <div id="turn-text" class="hud-turn">¡Tu Turno!</div>
+                            </div>
+
+                            <div id="p2-card" class="player-card">
+                                <div class="p-avatar">🤖</div>
+                                <div class="p-info">
+                                    <div id="p2-name" class="p-name">Rival</div>
+                                    <div id="p2-score" class="p-score">0 pts</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Circuito y Pregunta -->
+                        <div class="question-container">
+                            <div class="circuit-badge" id="circuit-title">
+                                📍 Circuito: Pucará de Tilcara
+                            </div>
+
+                            <h3 class="question-title" id="question-text">
+                                ¿Cargando pregunta del desafío?
+                            </h3>
+
+                            <div class="options-grid" id="options-container">
+                                <!-- Botones de opciones generados por JS -->
+                            </div>
+
+                            <!-- Barra de respuesta/feedback tipo circuito eléctrico -->
+                            <div id="circuit-feedback-bar" class="feedback-bar hidden">
+                                <span id="feedback-icon">⚡</span>
+                                <span id="feedback-message">Circuito verificado</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PANTALLA 4: RESULTADOS FINALES -->
+                    <div id="screen-results" class="game-screen hidden">
+                        <div class="results-banner">
+                            <div class="results-trophy" id="results-trophy">🏆</div>
+                            <h2 id="winner-announcement">¡Gran Victoria Tilcareña!</h2>
+                            <p class="subtitle" id="winner-subtitle">Has demostrado conocer el patrimonio de la Quebrada</p>
+                        </div>
+
+                        <div class="final-score-cards">
+                            <div class="final-card" id="final-p1-card">
+                                <span class="final-role">Tu Puntuación</span>
+                                <strong id="final-p1-score">0</strong>
+                                <small id="final-p1-name">Jugador 1</small>
+                            </div>
+                            <div class="final-card" id="final-p2-card">
+                                <span class="final-role">Contrincante</span>
+                                <strong id="final-p2-score">0</strong>
+                                <small id="final-p2-name">Rival</small>
+                            </div>
+                        </div>
+
+                        <div class="highscores-container">
+                            <h4>🏅 Salón de la Fama - Máximas Puntuaciones</h4>
+                            <ul class="score-list" id="high-scores-list">
+                                <!-- Creado dinámicamente con JS -->
+                            </ul>
+                        </div>
+
+                        <div class="results-actions">
+                            <button id="btn-restart" class="btn btn-primary btn-large">🔄 Jugar Otra Partida</button>
+                            <a href="#circuitos" class="btn btn-secondary">Repasar los 12 Puntos</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER INSTITUCIONAL -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="brand">
+                    <span class="brand-badge">STEAM</span>
+                    <span class="brand-title">IKU – TILKUNA</span>
+                </div>
+                <p>Proyecto Educativo y Tecnológico escolar de 4.° Año 3.ª División de la Escuela Normal Superior "Dr. Eduardo Casanova" de Tilcara, Jujuy.</p>
+                <p class="footer-sub">Auspiciado institucional y técnicamente por el Honorable Concejo Deliberante de Tilcara (Minuta N° 023/2026-HCDT).</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#inicio">Portada del Proyecto</a></li>
+                    <li><a href="#institucional">Equipo y Aval Institucional</a></li>
+                    <li><a href="#estudiantes">Equipo de Alumnos 4.° 3.ª</a></li>
+                    <li><a href="#steam">Enfoque STEAM y Encuestas</a></li>
+                    <li><a href="#circuitos">Galería de los 12 Sitios</a></li>
+                    <li><a href="#juego-seccion">Juego Interactivo</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Documentación Oficial</h4>
+                <ul>
+                    <li><a href="javascript:void(0)" id="footer-btn-minuta">Minuta de Declaración N° 023/2026</a></li>
+                    <li><a href="/documentos/tilkuna.pdf" target="_blank">Descargar Minuta PDF ↗</a></li>
+                    <li><a href="/documentos/proyecto.pdf" target="_blank">Informe Científico del Proyecto ↗</a></li>
+                    <li><a href="http://www.tilkuna.hcdtilcara.gob.ar" target="_blank">Subdominio Oficial HCD ↗</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Feria Nacional de Innovación Educativa, Arte, Ciencias y Tecnología 2026 • Tilcara, Quebrada de Humahuaca, Jujuy, Argentina.</p>
+        </div>
+    </footer>
+
+    <!-- =====================================================
+         MODAL 1: EDUCATIVO CON FOTO Y DETALLES DEL LUGAR (AL ACERTAR)
+         ===================================================== -->
+    <div id="modal-place-success" class="modal-overlay hidden" role="dialog" aria-modal="true">
+        <div class="modal-card modal-place-card">
+            <button class="modal-close-btn" id="modal-place-close" aria-label="Cerrar modal">&times;</button>
+            <div class="modal-badge-success">✨ ¡Respuesta Correcta! Circuito Activado ✨</div>
+            
+            <div class="modal-place-media">
+                <img id="modal-place-img" src="" alt="Sitio de Tilcara" class="modal-img-fluid" />
+                <span class="modal-place-tag" id="modal-place-badge">Circuito Tilkuna</span>
+            </div>
+
+            <div class="modal-place-body">
+                <h3 id="modal-place-name">Nombre del Sitio</h3>
+                <p class="modal-place-location" id="modal-place-location">📍 Tilcara, Jujuy</p>
+                <p class="modal-place-description" id="modal-place-description">Descripción patrimonial...</p>
+                
+                <div class="modal-fact-box">
+                    <span class="fact-icon">💡</span>
+                    <div>
+                        <strong>¿Sabías que...?</strong>
+                        <p id="modal-place-fact">Dato curioso investigado por los estudiantes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-place-footer">
+                <button id="modal-place-continue-btn" class="btn btn-primary btn-large">Continuar Desafío ➜</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================
+         MODAL 2: MINUTA DE DECLARACIÓN OFICIAL N° 023/2026-HCDT
+         ===================================================== -->
+    <div id="modal-minuta" class="modal-overlay hidden" role="dialog" aria-modal="true">
+        <div class="modal-card modal-document-card">
+            <button class="modal-close-btn" id="modal-minuta-close" aria-label="Cerrar modal">&times;</button>
+            <div class="modal-doc-header">
+                <div class="gov-seal">🏛️ CONCEJO DELIBERANTE DE TILCARA</div>
+                <h3>MINUTA DE DECLARACIÓN N° 023/2026-HCDT</h3>
+                <p class="doc-sub">Declaración de Interés Cultural, Educativo y Turístico Municipal</p>
+            </div>
+
+            <div class="modal-doc-content">
+                <div class="doc-quote">
+                    <strong>VISTO:</strong> El Proyecto Educativo Tecnológico "IKU – TILKUNA" ("Aprendé, Jugá, Descubrí, Tilcara") desarrollado por los alumnos de 4.° Año, 3.ª División de la Escuela Normal "Dr. Eduardo Casanova"; su sobresaliente trayectoria en las instancias Zonal y Provincial de la Feria de Ciencias, encontrándose en la Instancia Nacional 2026...
+                </div>
+
+                <div class="doc-articles">
+                    <h4>Articulado Principal:</h4>
+                    <div class="article-item">
+                        <strong>ARTÍCULO 1°:</strong> DECLÁRESE de Interés Cultural, Educativo y Turístico Municipal al Proyecto Tecnológico Escolar "IKU – TILKUNA".
+                    </div>
+                    <div class="article-item">
+                        <strong>ARTÍCULO 2°:</strong> EXPRÉSESE el más ferviente beneplácito y reconocimiento a las alumnas expositoras <strong>Llampas Isis Laila</strong> y <strong>Cazón Serapio María José</strong>, y a los profesores asesores <strong>Prof. Vilma Rosario Guanuco, Prof. Mirta Susana Mamani y Prof. Hernán Renato Gutiérrez</strong>.
+                    </div>
+                    <div class="article-item">
+                        <strong>ARTÍCULO 3°:</strong> DISPÓNGASE el auspicio técnico habilitando gratuitamente el subdominio <code>www.tilkuna.hcdtilcara.gob.ar</code> y almacenamiento en servidor VPS en la nube.
+                    </div>
+                    <div class="article-item">
+                        <strong>ARTÍCULO 4°:</strong> RECONÓZCASE y AVÁLESE el Taller Técnico-Pedagógico de integración a cargo del Secretario Parlamentario <strong>Cristian Alberto Pérez</strong> (Electrónica/USB, Node.js, WebSockets y Arduino con Web Serial API).
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-doc-footer">
+                <a href="/documentos/tilkuna.pdf" target="_blank" class="btn btn-primary">Abrir Documento PDF Escaneado Oficial</a>
+                <button id="btn-close-minuta-action" class="btn btn-secondary">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================
+         MODAL 3: INVITACIÓN / DESAFÍO MULTIJUGADOR ENTRANTE
+         ===================================================== -->
+    <div id="modal-challenge" class="modal-overlay hidden" role="dialog" aria-modal="true">
+        <div class="modal-card modal-challenge-card">
+            <div class="challenge-icon">⚔️</div>
+            <h3>¡Desafío Multijugador Entrante!</h3>
+            <p><strong id="challenge-sender-name">Otro Estudiante</strong> te ha desafiado a una partida en tiempo real.</p>
+            <div class="challenge-actions">
+                <button id="btn-accept-challenge" class="btn btn-primary btn-large">¡Aceptar Desafío!</button>
+                <button id="btn-reject-challenge" class="btn btn-secondary">Rechazar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
