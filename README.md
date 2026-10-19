@@ -106,3 +106,4 @@ El proyecto nació originalmente como una maqueta física dotada de un circuito 
 ## 📜 Aval Institucional y Documentación
 * Minuta de Declaración N° 023/2026-HCDT (Honorable Concejo Deliberante de Tilcara).
 * Subdominio institucional asignado: `www.tilkuna.hcdtilcara.gob.ar`.
+"# tilkuna" 
